@@ -8,6 +8,7 @@ var http = require('http')
 
 var deployServer = http.createServer(function(request, response) {
   if (request.url.search(/deploy$/i) > 0) {
+
     exec(['git', 'pull'], function(err, out, code) {
       if (err instanceof Error) {
         response.writeHead(500)
@@ -18,11 +19,13 @@ var deployServer = http.createServer(function(request, response) {
       process.stdout.write(out)
       response.writeHead(200)
       response.end('Deploy Done.')
-    });
+    })
 
   } else {
+
     response.writeHead(404)
     response.end('Not Found.')
+
   }
 })
 
