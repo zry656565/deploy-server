@@ -6,10 +6,13 @@
 var http = require('http')
   , exec = require('exec')
 
+const PORT = 9988
+  , PATH = '../html'
+
 var deployServer = http.createServer(function(request, response) {
   if (request.url.search(/deploy$/i) > 0) {
 
-    exec(['git', 'pull'], function(err, out, code) {
+    exec('cd ' + PATH + ' && git pull', function(err, out, code) {
       if (err instanceof Error) {
         response.writeHead(500)
         response.end('Server Internal Error.')
@@ -29,4 +32,4 @@ var deployServer = http.createServer(function(request, response) {
   }
 })
 
-deployServer.listen(9988)
+deployServer.listen(PORT)
