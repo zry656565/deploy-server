@@ -1,0 +1,27 @@
+{
+  "name": "deploy-server",
+  "version": "0.0.1",
+  "description": "Node Deploy Server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zry656565/deploy-server.git"
+  },
+  "keywords": [
+    "\"deploy",
+    "server\""
+  ],
+  "author": "Jerry Zou",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zry656565/deploy-server/issues"
+  },
+  "homepage": "https://github.com/zry656565/deploy-server#readme",
+  "dependencies": {
+    "exec": "~0.2.1"
+  }
+}
