@@ -10,9 +10,14 @@ const PORT = 9988
   , PATH = '../html'
 
 var deployServer = http.createServer(function(request, response) {
-  if (request.url.search(/deploy$/i) > 0) {
+  if (request.url.search(/deploy\/?$/i) > 0) {
 
-    exec('cd ' + PATH + ' && git pull', function(err, out, code) {
+    var commands = [
+      'cd ' + PATH,
+      'git pull'
+    ].join(' && ')
+
+    exec(commands, function(err, out, code) {
       if (err instanceof Error) {
         response.writeHead(500)
         response.end('Server Internal Error.')
@@ -22,6 +27,7 @@ var deployServer = http.createServer(function(request, response) {
       process.stdout.write(out)
       response.writeHead(200)
       response.end('Deploy Done.')
+
     })
 
   } else {
